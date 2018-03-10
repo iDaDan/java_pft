@@ -9,8 +9,12 @@ public class PointTests {
     @Test
     public void testDistance() {
         Point t = new Point(7,4,3,1);
-        Point e = new Point(-3)
-        assert t.distance() == 5;
         Assert.assertEquals(t.distance(),5.0);
+    }
+
+    @Test
+    public void testDistanceMinus() {
+        Point e = new Point(0, 1, -4,4);
+        Assert.assertEquals(e.distance(),5.0);
     }
 }
