@@ -1,4 +1,4 @@
-package ru.stqa.pft.sandboxCDBP;
+package ru.stqa.pft.sandbox.sandboxCDBP;
 
 public class Point {
     public double a;
