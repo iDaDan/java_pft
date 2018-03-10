@@ -4,9 +4,10 @@ public class CalculateDistanceBetweenPoints {
     public static void main(String[] args) {
         Point s = new Point(3, 4);
         Point g = new Point(10,8);
-        Point f = new Point (3, 4, 5, 6); //вариант 1 - через другой конструктор
-        System.out.println("Расстояние между точками равно " + distance(s, g));
-        System.out.println("Расстояние между точками равно " + f.distance());
+        Point f = new Point (3, 4, 10, 8); //вариант 1 - через другой конструктор
+        System.out.println("Расстояние между точками равно(функция) " + distance(s, g));
+        System.out.println("Расстояние между точками равно(перегрузка конструктора) " + f.distance());
+        System.out.println("Расстояние между точками равно(перегрузка метода) " + f.distance(3, 4,10,8));
     }
 
     public static double distance (Point p1, Point p2) {
