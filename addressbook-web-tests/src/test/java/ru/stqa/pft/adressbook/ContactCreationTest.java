@@ -35,9 +35,16 @@ public class ContactCreationTest {
 
         initNewConact();
         fillContactForm(new ContactData("TestName", "TestMiddlename", "TestLastName", "Test", "9097778881", "dadada@lol.net"));
-        wd.findElement(By.name("theform")).click();
-        wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+        submitContactCreation();
+        gotoHomePage();
+    }
+
+    private void gotoHomePage() {
         wd.findElement(By.linkText("home")).click();
+    }
+
+    private void submitContactCreation() {
+        wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
     }
 
     private void fillContactForm(ContactData contactData) {
