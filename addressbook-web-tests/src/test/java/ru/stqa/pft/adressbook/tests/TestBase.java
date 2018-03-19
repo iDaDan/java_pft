@@ -1,4 +1,4 @@
-package ru.stqa.pft.adressbook;
+package ru.stqa.pft.adressbook.tests;
 
 import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
