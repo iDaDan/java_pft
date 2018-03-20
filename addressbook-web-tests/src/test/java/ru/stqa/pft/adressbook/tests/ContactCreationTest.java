@@ -8,10 +8,10 @@ public class ContactCreationTest extends TestBase{
     @Test
     public void testCreationContact() {
 
-        app.initNewConact();
-        app.fillContactForm(new ContactData("TestName", "TestMiddlename", "TestLastName", "Test", "9097778881", "dadada@lol.net"));
-        app.submitContactCreation();
-        app.gotoHomePage();
+        app.getContactHelper().initNewConact();
+        app.getContactHelper().fillContactForm(new ContactData("TestName", "TestMiddlename", "TestLastName", "Test", "9097778881", "dadada@lol.net"));
+        app.getContactHelper().submitContactCreation();
+        app.getContactHelper().gotoHomePage();
     }
 
 
