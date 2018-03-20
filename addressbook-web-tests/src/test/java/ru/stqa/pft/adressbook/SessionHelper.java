@@ -3,21 +3,18 @@ package ru.stqa.pft.adressbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class SessionHelper {
-    private FirefoxDriver wd;
+public class SessionHelper extends HelperBase {
 
     public SessionHelper(FirefoxDriver wd) {
 
-        this.wd = wd;
+        super(wd);
     }
     public void login(String login, String pass) {
-        wd.findElement(By.name("user")).click();
-        wd.findElement(By.name("user")).click();
-        wd.findElement(By.name("user")).clear();
-        wd.findElement(By.name("user")).sendKeys(login);
+        type(By.name("user"), login);
+        type(By.name("pass"), pass);
         wd.findElement(By.name("pass")).click();
         wd.findElement(By.name("pass")).clear();
         wd.findElement(By.name("pass")).sendKeys(pass);
-        wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
+        click(By.xpath("//form[@id='LoginForm']/input[3]"));
     }
 }
