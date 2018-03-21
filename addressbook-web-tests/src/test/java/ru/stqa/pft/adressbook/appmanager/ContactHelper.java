@@ -12,9 +12,6 @@ public class ContactHelper extends HelperBase{
         super(wd);
     }
 
-    public void gotoHomePage() {
-        click(By.linkText("home"));
-    }
 
     public void submitContactCreation() {
         wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
@@ -25,15 +22,23 @@ public class ContactHelper extends HelperBase{
          type(By.name("middlename"), contactData.getMiddlename());
          type(By.name("lastname"),contactData.getLastname());
          type(By.name("nickname"),contactData.getNickname());
-         click(By.name("theform"));
-         click(By.name("theform"));
-         click(By.xpath("//div[@id='content']//label[.='Telephone']"));
-         click(By.name("theform"));
          type(By.name("home"), contactData.getHomePhone());
          type(By.name("email"), contactData.getEmail());
     }
 
     public void initNewConact() {
          click(By.linkText("add new"));
+    }
+
+    public void selectContact() {
+        click(By.id("1"));
+    }
+
+    public void initContactModification() {
+        click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+    }
+
+    public void submitContactModification() {
+        click(By.name("update"));
     }
 }
