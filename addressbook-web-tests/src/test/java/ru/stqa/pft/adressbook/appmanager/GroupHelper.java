@@ -27,6 +27,7 @@ public class GroupHelper extends HelperBase{
 
     public void initGroupCreation() {
         click(By.name("new"));
+        //System.out.println("2");
     }
 
     public void deleteSelectedGroups() {
