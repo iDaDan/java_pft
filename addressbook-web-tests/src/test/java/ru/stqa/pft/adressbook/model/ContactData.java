@@ -8,8 +8,9 @@ public class ContactData {
     private final String homePhone;
     private final String email;
     private String group;
+    private boolean creation;
 
-    public ContactData(String firstname, String middlename, String lastname, String nickname, String homePhone, String email, String Group) {
+    public ContactData(String firstname, String middlename, String lastname, String nickname, String homePhone, String email, String Group, boolean creation) {
         this.firstname = firstname;
         this.middlename = middlename;
         this.lastname = lastname;
@@ -17,6 +18,7 @@ public class ContactData {
         this.homePhone = homePhone;
         this.email = email;
         this.group = Group;
+        this.creation = creation;
     }
 
     public String getFirstname() {
@@ -45,5 +47,9 @@ public class ContactData {
 
     public String getGroup() {
         return group;
+    }
+
+    public boolean isCreation() {
+        return creation;
     }
 }
