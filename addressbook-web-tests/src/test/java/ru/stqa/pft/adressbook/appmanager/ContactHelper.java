@@ -59,7 +59,7 @@ public class ContactHelper extends HelperBase{
         wd.switchTo().alert().accept();
     }
 
-    public void isThereAContact() { isElementPresent(By.id("5")); }
+    public boolean isThereAContact() { return isElementPresent(By.id("5")); }
 
     public void createContact(ContactData contact) {
         initNewConact();
@@ -67,11 +67,11 @@ public class ContactHelper extends HelperBase{
         submitContactCreation();
     }
 
-    /*public  void isContactPresented() {
+    public  void isContactPresented() {
         if (! isThereAContact()) {
             createContact(new ContactData("TestName", "TestMiddlename","TestLastName",
-                "Test", "9097778881", "dadada@lol.net", "test1", true), true);
+                "Test", "9097778881", "dadada@lol.net", "test1", true));
         }
-    }*/
+    }
 
 }
