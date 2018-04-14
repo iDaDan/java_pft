@@ -15,7 +15,4 @@ public class ContactModificationTests extends TestBase {
         app.getContactHelper().submitContactModification();
         app.getNavigationHelper().gotoHomePage();
     }
-
-
-
 }
