@@ -13,9 +13,12 @@ public class GroupData {
         this.footer = footer;
     }
 
+
+
     public GroupData(String name, String header, String footer) {
         this.id = Integer.MAX_VALUE;
         this.name = name;
+
         this.header = header;
         this.footer = footer;
     }

@@ -17,8 +17,8 @@ public class GroupDeletionTests extends TestBase {
         app.getGroupHelper().isGroupPresented();
         List<GroupData> before = app.getGroupHelper().getGroupList(); // в этой строчке короч надо придумать, как сократить путь до .getName,
         // потому что он используется в каждом аргументе new GroupData;
-        GroupData preIndicator = new GroupData(before.get(before.size()- 1).getId(),before.get(before.size()- 1));
-        GroupData group = new GroupData(before.get(before.size()- 1).getId(),before.get(before.size()- 1).getName(), "test2", "test3");
+        GroupData preIndicator = before.get(before.size()- 1);
+        GroupData group = new GroupData(preIndicator.getId(),preIndicator.getName(), preIndicator.getHeader(), preIndicator.getFooter());
         app.getGroupHelper().selectGroup(before.size() - 1);
         app.getGroupHelper().deleteSelectedGroups();
         app.getGroupHelper().returnToGroupPage();

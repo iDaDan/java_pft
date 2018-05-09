@@ -82,4 +82,8 @@ public class GroupHelper extends HelperBase{
         }
         return groups;
     }
+
+   /* public void getLastGroupElementNumber () {
+        GroupData preIndicator = before.get(before.size()- 1);
+    }*/
 }
