@@ -1,10 +1,8 @@
 package ru.stqa.pft.adressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.adressbook.model.ContactData;
@@ -74,7 +72,7 @@ public class ContactHelper extends HelperBase{
     public  void isContactPresented() {
         if (! isThereAContact()) {
             createContact(new ContactData("TestName", "TestMiddlename","TestLastName",
-                "Test", "9097778881", "dadada@lol.net", "test1", true));
+                "Test", "9097778881", "dadada@lol.net", "test4", true));
         }
     }
 
@@ -83,9 +81,17 @@ public class ContactHelper extends HelperBase{
     }
 
 
-/*    public List<ContactData> getContactList() {
-        List<ContactData> contact = new ArrayList<>();
-        List<WebElement> elements = wd.findElements(By.cssSelector());
+  /*  public List<ContactData> getContactList() {
+        List<ContactData> contacts = new ArrayList<>();
+        List<WebElement> elements = wd.findElements(By.name("entry"));
+        for (WebElement element : elements) {
+            String name = element.getText();
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+            ContactData contact = new ContactData(id, lastName,firstName, Address, firstname);
+            contacts.add(contact);
 
+        }
+
+        return contacts;
     }*/
 }
