@@ -10,6 +10,7 @@ public class ContactModificationTests extends TestBase {
 
     @Test
     public void testContactModification() {
+        app.getNavigationHelper().gotoHomePage();
         app.getContactHelper().isContactPresented();
         List<ContactData> before = app.getContactHelper().getContactList();
         app.getContactHelper().selectContact(before.size() - 2);
