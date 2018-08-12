@@ -13,31 +13,26 @@ public class ContactData {
     private final String homePhone;
     private final String email;
     private final String address;
-    private final String allPhones;
-    private final String lastName;
-    private final String firstName;
 
 
 
-    public ContactData(String firstname, String middlename, String lastname, String nickname, String homePhone, String email, String Group, boolean creation) {
+
+
+    public ContactData(String firstname, String middlename, String lastname, String nickname,
+                       String address, String homePhone, String email, String Group, boolean creation) {
         this.firstname = firstname;
         this.middlename = middlename;
         this.lastname = lastname;
         this.nickname = nickname;
-        this.homePhone = homePhone;
         this.email = email;
         this.group = Group;
         this.creation = creation;
-    }
-
-
-    public ContactData(int id, String lastName, String firstName, String address, String allPhones){
-        this.id = id;
-        this.lastName = lastName;
         this.address = address;
-        this.firstName = firstName;
-        this.allPhones = allPhones;
+        this.id = id;
+        this.homePhone = homePhone;
     }
+
+
 
     public String getFirstname() {
         return firstname;
@@ -75,22 +70,7 @@ public class ContactData {
         return address;
     }
 
-    public String getAllPhones() {
-        return allPhones;
-    }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    @Override
-    public String toString() {
-        return "ContactData{" +
-                "lastName='" + lastName + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", id=" + id +
-                '}';
-    }
 
 }
 

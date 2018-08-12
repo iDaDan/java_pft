@@ -41,8 +41,9 @@ public class ContactHelper extends HelperBase{
          click(By.linkText("add new"));
     }
 
-    public void selectContact() {
-        click(By.name("selected[]"));
+    public void selectContact(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
+
     }
 
     public void initContactModification() {
@@ -72,7 +73,7 @@ public class ContactHelper extends HelperBase{
     public  void isContactPresented() {
         if (! isThereAContact()) {
             createContact(new ContactData("TestName", "TestMiddlename","TestLastName",
-                "Test", "9097778881", "dadada@lol.net", "test4", true));
+                "Test", null,"9097778881", "dadada@lol.net", "test4", true));
         }
     }
 
@@ -88,7 +89,8 @@ public class ContactHelper extends HelperBase{
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
             String lastName = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
             String firstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
-            ContactData contact = new ContactData(id, lastName, firstName, null, null);
+            ContactData contact = new ContactData( firstName, null, lastName, null, null,
+                    null,null,null, false);
             contacts.add(contact);
 
         }

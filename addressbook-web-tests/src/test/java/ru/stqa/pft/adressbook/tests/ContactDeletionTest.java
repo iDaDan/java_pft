@@ -12,7 +12,7 @@ public class ContactDeletionTest extends TestBase {
         app.getNavigationHelper().gotoHomePage();
         app.getContactHelper().isContactPresented();
         List<ContactData> before = app.getContactHelper().getContactList();
-        app.getContactHelper().selectContact();
+        app.getContactHelper().selectContact(before.size() - 1);
         app.getContactHelper().initContactDeletion();
         app.getContactHelper().acceptContactDeletion();
     }
