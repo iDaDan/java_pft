@@ -1,15 +1,21 @@
 package ru.stqa.pft.adressbook.model;
 
 public class ContactData {
+
+
+    private String group;
     private int id;
+    private boolean creation;
     private final String firstname;
     private final String middlename;
     private final String lastname;
     private final String nickname;
     private final String homePhone;
     private final String email;
-    private String group;
-    private boolean creation;
+    private final String address;
+    private final String allPhones;
+    private final String lastName;
+    private final String firstName;
 
 
 
@@ -24,12 +30,14 @@ public class ContactData {
         this.creation = creation;
     }
 
-/*    public ContactData(int id, String lastName, String firstName, String Address, String firstName){
+
+    public ContactData(int id, String lastName, String firstName, String address, String allPhones){
         this.id = id;
         this.lastName = lastName;
-        this.Address = Address;
+        this.address = address;
         this.firstName = firstName;
-    }*/
+        this.allPhones = allPhones;
+    }
 
     public String getFirstname() {
         return firstname;
@@ -62,4 +70,27 @@ public class ContactData {
     public boolean isCreation() {
         return creation;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getAllPhones() {
+        return allPhones;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", id=" + id +
+                '}';
+    }
+
 }
+
