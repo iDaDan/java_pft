@@ -7,6 +7,8 @@ import ru.stqa.pft.adressbook.model.ContactData;
 import java.util.HashSet;
 import java.util.List;
 
+import static org.testng.Assert.assertEquals;
+
 public class ContactModificationTests extends TestBase {
 
     @Test
@@ -22,10 +24,10 @@ public class ContactModificationTests extends TestBase {
         app.getContactHelper().submitContactModification();
         app.getNavigationHelper().gotoHomePage();
         List<ContactData> after = app.getContactHelper().getContactList();
-        Assert.assertEquals(after.size(), before.size());
+        assertEquals(after.size(), before.size());
 
         before.remove(before.size() - 1);
         before.add(contact);
-        Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+        assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
     }
 }
