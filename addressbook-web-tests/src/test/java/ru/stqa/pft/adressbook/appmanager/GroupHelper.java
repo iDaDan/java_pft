@@ -33,6 +33,13 @@ public class GroupHelper extends HelperBase{
         click(By.name("new"));
         //System.out.println("2");
     }
+    public void modifyGroup(int index, GroupData group) {
+        selectGroup(index);
+        initGroupModification();
+        fillGroupForm(group);
+        submitGroupModification();
+        returnToGroupPage();
+    }
 
     public void deleteSelectedGroups() {
         click(By.xpath("//div[@id='content']/form/input[5]"));
@@ -83,7 +90,4 @@ public class GroupHelper extends HelperBase{
         return groups;
     }
 
-   /* public void getLastGroupElementNumber () {
-        GroupData preIndicator = before.get(before.size()- 1);
-    }*/
 }

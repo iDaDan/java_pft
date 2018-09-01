@@ -1,6 +1,7 @@
 package ru.stqa.pft.adressbook.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.adressbook.model.GroupData;
 
@@ -9,7 +10,11 @@ import java.util.List;
 
 public class GroupDeletionTests extends TestBase {
 
-
+    @BeforeMethod
+    public void ensurePreconditions() {
+        app.getNavigationHelper().goToGroupPage();
+        app.getGroupHelper().isGroupPresented();
+    }
     
     @Test
     public void testGroupDeletion() {
