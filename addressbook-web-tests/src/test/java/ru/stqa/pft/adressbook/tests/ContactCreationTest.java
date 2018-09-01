@@ -14,8 +14,7 @@ public class ContactCreationTest extends TestBase{
 
     @Test(enabled = false)
     public void testCreationContact() {
-        /*int i;
-        for (i = 0; i < 5; i++ )*/
+
         {
 
             app.getNavigationHelper().gotoHomePage();

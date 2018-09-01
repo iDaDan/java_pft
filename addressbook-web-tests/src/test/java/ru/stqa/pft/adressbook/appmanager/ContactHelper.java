@@ -10,6 +10,8 @@ import ru.stqa.pft.adressbook.model.ContactData;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ru.stqa.pft.adressbook.tests.TestBase.app;
+
 public class ContactHelper extends HelperBase{
 
 
@@ -71,6 +73,13 @@ public class ContactHelper extends HelperBase{
         submitContactCreation();
     }
 
+    public void modifyContact(int index, ContactData contact) {
+        selectContact(index);
+        initContactModification(index);
+        fillContactForm(contact);
+        submitContactModification();
+    }
+
     public  void isContactPresented() {
         if (! isThereAContact()) {
             createContact(new ContactData("TestName", "TestMiddlename","TestLastName",
@@ -98,4 +107,5 @@ public class ContactHelper extends HelperBase{
 
         return contacts;
     }
+
 }
