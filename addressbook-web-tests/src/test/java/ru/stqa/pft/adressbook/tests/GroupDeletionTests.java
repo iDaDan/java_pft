@@ -7,6 +7,7 @@ import ru.stqa.pft.adressbook.model.GroupData;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GroupDeletionTests extends TestBase {
 
@@ -18,16 +19,15 @@ public class GroupDeletionTests extends TestBase {
     
     @Test
     public void testGroupDeletion() {
-        app.goTo().groupPage();
-        app.group().isGroupPresented();
-        List<GroupData> before = app.group().list();
-        int index = before.size()- 1;
-        app.group().delete(index);
-        app.group().returnToGroupPage();
-        List<GroupData> after = app.group().list();
-        Assert.assertEquals(after.size(), index);
 
-        before.remove(index);
+        Set<GroupData> before = app.group().all();
+        GroupData deletedGroup = before.iterator().next();
+        app.group().delete(deletedGroup);
+        app.group().returnToGroupPage();
+        Set<GroupData> after = app.group().all();
+        Assert.assertEquals(after.size(), before.size()- 1);
+
+        before.remove(deletedGroup);
         Assert.assertEquals(before, after);
 
     }
