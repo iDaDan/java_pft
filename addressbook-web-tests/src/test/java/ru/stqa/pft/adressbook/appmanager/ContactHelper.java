@@ -10,7 +10,7 @@ import ru.stqa.pft.adressbook.model.ContactData;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ru.stqa.pft.adressbook.tests.TestBase.app;
+//import static ru.stqa.pft.adressbook.tests.TestBase.app;
 
 public class ContactHelper extends HelperBase{
 
@@ -80,7 +80,7 @@ public class ContactHelper extends HelperBase{
         submitContactModification();
     }
 
-    public  void isContactPresented() {
+    public  void isPresented() {
         if (! isThereAContact()) {
             createContact(new ContactData("TestName", "TestMiddlename","TestLastName",
                 "Test", null,"9097778881", "dadada@lol.net", "test4", true));
@@ -92,7 +92,7 @@ public class ContactHelper extends HelperBase{
     }
 
 
-    public List<ContactData> getContactList() {
+    public List<ContactData> getList() {
         List<ContactData> contacts = new ArrayList<ContactData>();
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for (WebElement element : elements) {
@@ -106,6 +106,12 @@ public class ContactHelper extends HelperBase{
         }
 
         return contacts;
+    }
+
+    public void delete(int index) {
+        selectContact(index);
+        initContactDeletion();
+        acceptContactDeletion();
     }
 
 }

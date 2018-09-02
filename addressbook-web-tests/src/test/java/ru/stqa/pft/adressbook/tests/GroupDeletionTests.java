@@ -12,31 +12,24 @@ public class GroupDeletionTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
-        app.getNavigationHelper().goToGroupPage();
-        app.getGroupHelper().isGroupPresented();
+        app.goTo().groupPage();
+        app.group().isGroupPresented();
     }
     
     @Test
     public void testGroupDeletion() {
-        app.getNavigationHelper().goToGroupPage();
-        app.getGroupHelper().isGroupPresented();
-        List<GroupData> before = app.getGroupHelper().getGroupList(); // в этой строчке короч надо придумать, как сократить путь до .getName,
-        // потому что он используется в каждом аргументе new GroupData;
-        GroupData preIndicator = before.get(before.size()- 1);
-        GroupData group = new GroupData(preIndicator.getId(),preIndicator.getName(), preIndicator.getHeader(), preIndicator.getFooter());
-        app.getGroupHelper().selectGroup(before.size() - 1);
-        app.getGroupHelper().deleteSelectedGroups();
-        app.getGroupHelper().returnToGroupPage();
-        List<GroupData> after = app.getGroupHelper().getGroupList();
-        Assert.assertEquals(after.size(), before.size() - 1);
+        app.goTo().groupPage();
+        app.group().isGroupPresented();
+        List<GroupData> before = app.group().list();
+        int index = before.size()- 1;
+        app.group().delete(index);
+        app.group().returnToGroupPage();
+        List<GroupData> after = app.group().list();
+        Assert.assertEquals(after.size(), index);
 
-        before.remove(before.size() - 1);
+        before.remove(index);
         Assert.assertEquals(before, after);
 
-        group.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
-        before.remove(group);
-        Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
     }
-
 
 }

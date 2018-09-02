@@ -7,7 +7,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.adressbook.model.GroupData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GroupHelper extends HelperBase{
 
@@ -70,7 +72,7 @@ public class GroupHelper extends HelperBase{
 
     public void isGroupPresented() {
         if (! isThereAGroup()){
-            createGroup(new GroupData("test1", null, null));
+            createGroup(new GroupData().withName("test1"));
         }
     }
 
@@ -78,16 +80,31 @@ public class GroupHelper extends HelperBase{
         return wd.findElements(By.name("selected[]")).size();
     }
 
-    public List<GroupData> getGroupList() {
+    public List<GroupData> list() {
         List<GroupData> groups = new ArrayList<GroupData>();
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
         for (WebElement element : elements) {
             String name = element.getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            GroupData group = new GroupData(id, name,null, null);
-            groups.add(group);
+            groups.add(new GroupData().withId(id).withName(name));
         }
         return groups;
+    }
+
+    public Set<GroupData> all() {
+        Set<GroupData> groups = new HashSet<GroupData>();
+        List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+        for (WebElement element : elements) {
+            String name = element.getText();
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+            groups.add(new GroupData().withId(id).withName(name));
+        }
+        return groups;
+    }
+
+    public void delete(int index) {
+        selectGroup(index);
+        deleteSelectedGroups();
     }
 
 }
