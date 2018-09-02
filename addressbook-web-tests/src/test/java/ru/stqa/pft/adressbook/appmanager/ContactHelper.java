@@ -6,11 +6,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.adressbook.model.ContactData;
+import ru.stqa.pft.adressbook.model.GroupData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-//import static ru.stqa.pft.adressbook.tests.TestBase.app;
+
 
 public class ContactHelper extends HelperBase{
 
@@ -48,6 +51,10 @@ public class ContactHelper extends HelperBase{
 
     }
 
+    public void selectContactById(int id) {
+        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+    }
+
     public void initContactModification(int index) {
         wd.findElements(By.cssSelector("[title=Edit]")).get(index).click();
 
@@ -82,8 +89,9 @@ public class ContactHelper extends HelperBase{
 
     public  void isPresented() {
         if (! isThereAContact()) {
-            createContact(new ContactData("TestName", "TestMiddlename","TestLastName",
-                "Test", null,"9097778881", "dadada@lol.net", "test4", true));
+        createContact(new ContactData().withNickname("TestName").withMiddlename("TestMiddlename")
+                .withLastname("TestLastName").withNickname("Test").withHomePhone("9097778881")
+                .withEmail("dadada@lol.net").withGroup("test4").withCreation(true));
         }
     }
 
@@ -92,17 +100,14 @@ public class ContactHelper extends HelperBase{
     }
 
 
-    public List<ContactData> getList() {
-        List<ContactData> contacts = new ArrayList<ContactData>();
+    public Set<ContactData> all() {
+        Set<ContactData> contacts = new HashSet<ContactData>();
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for (WebElement element : elements) {
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
             String lastName = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
             String firstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
-            ContactData contact = new ContactData(id, firstName, null, lastName, null, null,
-                    null,null,null, false);
-            contacts.add(contact);
-
+            contacts.add(new ContactData().withId(id).withFirstname(firstName).withLastname(lastName));
         }
 
         return contacts;
@@ -110,6 +115,12 @@ public class ContactHelper extends HelperBase{
 
     public void delete(int index) {
         selectContact(index);
+        initContactDeletion();
+        acceptContactDeletion();
+    }
+
+    public void delete(ContactData deletedContact) {
+        selectContactById(deletedContact.getId());
         initContactDeletion();
         acceptContactDeletion();
     }

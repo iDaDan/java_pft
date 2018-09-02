@@ -22,7 +22,7 @@ public class GroupCreationTests extends TestBase {
         Set<GroupData> after = app.group().all();
         assertEquals(after.size(), before.size() + 1);
 
-group.withId(after.stream().mapToInt((g)-> g.getId()).max().getAsInt());
+        group.withId(after.stream().mapToInt((g)-> g.getId()).max().getAsInt());
         before.add(group);
         assertEquals(before, after);
 
