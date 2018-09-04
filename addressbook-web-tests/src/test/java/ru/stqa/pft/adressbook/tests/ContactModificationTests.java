@@ -19,7 +19,7 @@ public class ContactModificationTests extends TestBase {
 
     }
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void testContactModification() {
 
         Set<ContactData> before = app.contact().all();
