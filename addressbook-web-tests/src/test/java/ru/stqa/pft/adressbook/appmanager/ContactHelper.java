@@ -109,12 +109,15 @@ public class ContactHelper extends HelperBase{
             return contactCache;
         }
         contactCache = new Contacts();
-        List<WebElement> elements = wd.findElements(By.name("entry"));
-        for (WebElement element : elements) {
-            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            String lastName = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
-            String firstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
-            contactCache.add(new ContactData().withId(id).withFirstname(firstName).withLastname(lastName));
+        List<WebElement> rows = wd.findElements(By.name("entry"));
+        for (WebElement row : rows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+            String lastName = cells.get(1).getText();
+            String firstName = cells.get(2).getText();
+            String[] phones = cells.get(5).getText().split("\n");
+            contactCache.add(new ContactData().withId(id).withFirstname(firstName).withLastname(lastName)
+                    .withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]));
         }
 
         return new Contacts(contactCache);
