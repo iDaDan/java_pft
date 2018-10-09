@@ -28,7 +28,6 @@ public class GroupDataGenerator {
             jCommander.parse(args);
         } catch (ParameterException ex) {
             jCommander.usage();
-            return;
         }
         generator.run();
     }
