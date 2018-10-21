@@ -3,6 +3,9 @@ package ru.stqa.pft.adressbook.generators;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.adressbook.model.ContactData;
 
 import java.io.File;
@@ -14,7 +17,7 @@ import java.util.List;
 
 public class ContactDataGenerator {
 
-    @Parameter(names = "-c", description = "group count")
+    @Parameter(names = "-c", description = "contact count")
     public int count;
 
     @Parameter (names = "-f", description = "target file")
@@ -39,9 +42,21 @@ public class ContactDataGenerator {
         List<ContactData> contacts = generateContact(count);
         if (format.equals("csv")) {
             saveAsCsv(contacts, new File(file));
+        } else if (format.equals("xml")) {
+            saveAsXml(contacts,new File(file));
+        } else if (format.equals("json")) {
+            saveAsJson(contacts,new File(file));
         } else {
             System.out.println("Unrecognized format " + format);
         }
+    }
+
+    private void saveAsJson(List<ContactData> contacts, File file) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
+        String json = gson.toJson(contacts);
+        Writer writer = new FileWriter(file);
+        writer.write(json);
+        writer.close();
     }
 
     private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
@@ -55,14 +70,26 @@ public class ContactDataGenerator {
         writer.close();
     }
 
+    private void saveAsXml(List<ContactData> contacts, File file) throws IOException {
+        XStream xstream = new XStream();
+        xstream.processAnnotations(ContactData.class);
+        String xml = xstream.toXML(contacts);
+        Writer writer = new FileWriter(file);
+        writer.write(xml);
+        writer.close();
+    }
+
     private List<ContactData> generateContact(int count) {
         File photo = new File("src/test/resources/smile.jpg");
         List<ContactData> contacts = new ArrayList<ContactData>();
         for (int i = 0; i < count; i++){
-            contacts.add(new ContactData().withFirstname(String.format("TestName %s", i)).withMiddlename(String.format("TestMiddlename %s", i))
-                    .withLastname(String.format("TestLastName %s", i)).withNickname(String.format("Test %s", i))
-                    .withHomePhone(String.format("9097778881 %s", i)).withEmail(String.format("dadada@lol.net %s", i))
-                    .withPhoto(photo).withGroup(String.format("test %s", i)).withCreation(true));
+            contacts.add(new ContactData().withFirstname(String.format("TestName %s", i))
+                    .withMiddlename(String.format("TestMiddlename %s", i))
+                    .withLastname(String.format("TestLastName %s", i))
+                    .withNickname(String.format("Test %s", i))
+                    .withHomePhone(String.format("9097778881 %s", i))
+                    .withEmail(String.format("dadada@lol.net %s", i))
+                    .withGroup(String.format("test %s", i)));
         }
         return contacts;
     }
