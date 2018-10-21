@@ -51,15 +51,11 @@ public class ContactCreationTest extends TestBase{
 
 
     @Test (dataProvider = "validContactsFromJson")//(enabled = false)
-    public void testCreationContact(ContactData contacts) {
+    public void testCreationContact(ContactData contact) {
         app.goTo().homePage();
         Contacts before = app.contact().all();
         File photo = new File("src/test/resources/smile.jpg");
-        ContactData contact = new ContactData()
-                .withFirstname("TestName10").withMiddlename("TestMiddlename").withLastname("TestLastName")
-                .withNickname("Test").withHomePhone("9097778881").withEmail("dadada@lol.net").withPhoto(photo).withGroup("test4").withCreation(true);
-
-        app.contact().createContact(contacts);
+        app.contact().createContact(contact);
         app.goTo().homePage();
         assertThat(app.contact().count(), equalTo(before.size() + 1));
         Contacts after = app.contact().all();

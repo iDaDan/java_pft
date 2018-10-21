@@ -87,9 +87,10 @@ public class ContactDataGenerator {
                     .withMiddlename(String.format("TestMiddlename %s", i))
                     .withLastname(String.format("TestLastName %s", i))
                     .withNickname(String.format("Test %s", i))
-                    .withHomePhone(String.format("9097778881 %s", i))
-                    .withEmail(String.format("dadada@lol.net %s", i))
-                    .withGroup(String.format("test %s", i)));
+                    .withHomePhone(String.format("909777888%s", i))
+                    .withEmail(String.format("dadada@lol.net", i))
+                    .withGroup(String.format("name1"))
+                    .withCreation(new Boolean("true")));
         }
         return contacts;
     }

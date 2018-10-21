@@ -1,32 +1,32 @@
 [
   {
-    "creation": false,
-    "group": "test 0",
+    "creation": true,
+    "group": "name1",
     "firstname": "TestName 0",
     "middlename": "TestMiddlename 0",
     "lastname": "TestLastName 0",
     "nickname": "Test 0",
-    "homePhone": "9097778881 0",
-    "email": "dadada@lol.net 0"
+    "homePhone": "9097778880",
+    "email": "dadada@lol.net"
   },
   {
-    "creation": false,
-    "group": "test 1",
+    "creation": true,
+    "group": "name1",
     "firstname": "TestName 1",
     "middlename": "TestMiddlename 1",
     "lastname": "TestLastName 1",
     "nickname": "Test 1",
-    "homePhone": "9097778881 1",
-    "email": "dadada@lol.net 1"
+    "homePhone": "9097778881",
+    "email": "dadada@lol.net"
   },
   {
-    "creation": false,
-    "group": "test 2",
+    "creation": true,
+    "group": "name1",
     "firstname": "TestName 2",
     "middlename": "TestMiddlename 2",
     "lastname": "TestLastName 2",
     "nickname": "Test 2",
-    "homePhone": "9097778881 2",
-    "email": "dadada@lol.net 2"
+    "homePhone": "9097778882",
+    "email": "dadada@lol.net"
   }
 ]

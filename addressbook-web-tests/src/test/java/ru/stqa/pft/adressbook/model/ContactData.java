@@ -44,6 +44,8 @@ public class ContactData {
     private String allMails;
     @Expose
     private File photo;
+    @Expose
+    private String isCreation;
 
     public int getId() {
         return id;
@@ -58,6 +60,7 @@ public class ContactData {
         this.creation = creation;
         return this;
     }
+
 
     public ContactData withGroup(String group) {
         this.group = group;
@@ -200,6 +203,7 @@ public class ContactData {
     public boolean isCreation() {
         return creation;
     }
+
 
 
 
