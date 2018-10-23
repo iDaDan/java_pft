@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.stqa.pft.adressbook.tests.GroupCreationTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2018-10-23T07:04:17" hostname="acer" time="54.534">
+  <properties/>
+  <testcase name="testBadGroupCreation" classname="ru.stqa.pft.adressbook.tests.GroupCreationTests" time="20.113"/>
+  <testcase name="testGroupCreation[0](GroupData{id='2147483647', name='test 0'})" classname="ru.stqa.pft.adressbook.tests.GroupCreationTests" time="11.577"/>
+  <testcase name="testGroupCreation[1](GroupData{id='2147483647', name='test 1'})" classname="ru.stqa.pft.adressbook.tests.GroupCreationTests" time="11.319"/>
+  <testcase name="testGroupCreation[2](GroupData{id='2147483647', name='test 2'})" classname="ru.stqa.pft.adressbook.tests.GroupCreationTests" time="11.095"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
