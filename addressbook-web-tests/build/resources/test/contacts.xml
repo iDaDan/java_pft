@@ -1,0 +1,23 @@
+<list>
+  <contact>
+    <creation>false</creation>
+    <group>test 0</group>
+    <firstname>TestName 0</firstname>
+    <middlename>TestMiddlename 0</middlename>
+    <lastname>TestLastName 0</lastname>
+  </contact>
+  <contact>
+    <creation>false</creation>
+    <group>test 1</group>
+    <firstname>TestName 1</firstname>
+    <middlename>TestMiddlename 1</middlename>
+    <lastname>TestLastName 1</lastname>
+  </contact>
+  <contact>
+    <creation>false</creation>
+    <group>test 2</group>
+    <firstname>TestName 2</firstname>
+    <middlename>TestMiddlename 2</middlename>
+    <lastname>TestLastName 2</lastname>
+  </contact>
+</list>
