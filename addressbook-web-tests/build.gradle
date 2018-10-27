@@ -11,6 +11,7 @@ dependencies {
     compile 'com.beust:jcommander:1.48'
     compile 'com.thoughtworks.xstream:xstream-distribution:1.4.10'
     compile 'com.google.code.gson:gson:2.8.5'
+    compile 'ch.qos.logback:logback-classic:1.2.3'
 }
 
 task testGroups(type: Test) {
@@ -27,7 +28,7 @@ task testGroups(type: Test) {
 
 task testContacts(type: Test) {
     useTestNG{
-        suites 'src/test/resources/testng-contacts.xml'
+        suites 'src/test/resources/testng-groups.xml'
     }
     if (project.hasProperty('browser')) {
         systemProperty 'browser', "${browser}"
