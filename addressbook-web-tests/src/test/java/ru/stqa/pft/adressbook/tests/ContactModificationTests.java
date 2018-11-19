@@ -27,8 +27,7 @@ public class ContactModificationTests extends TestBase {
 
     @Test //(enabled = false)
     public void testContactModification() {
-
-        Contacts before = app.contact().all();
+        Contacts before = app.db().contacts();
         int index = before.size() - 1;
         ContactData modifiedContact = before.iterator().next();
         ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstname("TestName2").withMiddlename("TestMiddlename")
@@ -37,11 +36,11 @@ public class ContactModificationTests extends TestBase {
         app.contact().modifyContact(index, contact);
         app.goTo().homePage();
         assertEquals(before.size(), app.contact().count());
-        Contacts after = app.contact().all();
-
-
+        Contacts after = app.db().contacts();
         assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
+        verifyContactListInUI();
     }
+
 
 
 }

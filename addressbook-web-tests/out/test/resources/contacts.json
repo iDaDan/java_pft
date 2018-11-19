@@ -1,7 +1,7 @@
 [
   {
     "creation": true,
-    "group": "name1",
+    "group": "test4",
     "firstname": "TestName 0",
     "middlename": "TestMiddlename 0",
     "lastname": "TestLastName 0",
@@ -11,7 +11,7 @@
   },
   {
     "creation": true,
-    "group": "name1",
+    "group": "test4",
     "firstname": "TestName 1",
     "middlename": "TestMiddlename 1",
     "lastname": "TestLastName 1",
@@ -21,7 +21,7 @@
   },
   {
     "creation": true,
-    "group": "name1",
+    "group": "test4",
     "firstname": "TestName 2",
     "middlename": "TestMiddlename 2",
     "lastname": "TestLastName 2",
