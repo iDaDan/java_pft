@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.adressbook.model.ContactData;
 import ru.stqa.pft.adressbook.model.Contacts;
+import ru.stqa.pft.adressbook.model.Groups;
 
 import java.util.List;
 import java.util.Set;
@@ -20,7 +21,8 @@ public class ContactDeletionTest extends TestBase {
     @BeforeMethod
     public void ensurePreconditions(){
         app.goTo().homePage();
-        app.contact().isPresented();
+        Groups groups = app.db().groups();
+        app.contact().isPresented(groups);
 
     }
 

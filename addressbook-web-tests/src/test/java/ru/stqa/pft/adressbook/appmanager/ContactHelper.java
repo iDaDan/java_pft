@@ -8,6 +8,7 @@ import org.testng.Assert;
 import ru.stqa.pft.adressbook.model.ContactData;
 import ru.stqa.pft.adressbook.model.Contacts;
 import ru.stqa.pft.adressbook.model.GroupData;
+import ru.stqa.pft.adressbook.model.Groups;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -38,7 +39,11 @@ public class ContactHelper extends HelperBase{
         //attach(By.name("photo"), contactData.getPhoto());
 
          if (contactData.isCreation()) {
-             new Select (wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+             if (contactData.getGroups().size() > 0){
+             Assert.assertTrue(contactData.getGroups().size() == 1);
+             new Select (wd.findElement(By.name("new_group"))).selectByVisibleText(contactData
+                     .getGroups().iterator().next().getName());
+             }
          } else {
              Assert.assertFalse(isElementPresent(By.name("new_group")));
          }
@@ -91,11 +96,13 @@ public class ContactHelper extends HelperBase{
         contactCache = null;
     }
 
-    public  void isPresented() {
+    public  void isPresented(Groups groups) {
         if (! isThereAContact()) {
         createContact(new ContactData().withNickname("TestName").withMiddlename("TestMiddlename")
                 .withLastname("TestLastName").withNickname("Test").withHomePhone("9097778881")
-                .withEmail("dadada@lol.net").withGroup("test4").withCreation(true));
+                .withEmail("dadada@lol.net")
+                .inGroup(groups.iterator().next())
+                .withCreation(true));
         }
     }
 
