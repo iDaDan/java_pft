@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import ru.stqa.pft.adressbook.appmanager.ApplicationManager;
 import org.openqa.selenium.remote.BrowserType;
+import ru.stqa.pft.adressbook.model.ContactData;
 import ru.stqa.pft.adressbook.model.Contacts;
 import ru.stqa.pft.adressbook.model.GroupData;
 import ru.stqa.pft.adressbook.model.Groups;
@@ -58,7 +59,16 @@ public class TestBase {
         if (Boolean.getBoolean("verifyUI")) {
             Contacts dbContacts = app.db().contacts();
             Contacts uiContacts = app.contact().all();
-            MatcherAssert.assertThat(uiContacts, CoreMatchers.equalTo(dbContacts.stream().map((g) -> new GroupData().withId(g.getId()).withName(g.getFirstname())).withMiddlename(g.getMiddlename()).collect(Collectors.toSet())));
+            MatcherAssert.assertThat(uiContacts,
+                    CoreMatchers.equalTo(
+                            (dbContacts.stream().map((g) -> new ContactData()
+                                    .withId(g.getId()).withFirstname(g.getFirstname())
+                                    .withMiddlename(g.getMiddlename()).withLastname(g.getLastname())
+                                    .withNickname(g.getNickname()).withHomePhone(g.getHomePhone())
+                                    .withEmail(g.getEmail()).withEmail2(g.getEmail2())
+                                    .withEmail3(g.getEmail3()).withMobilePhone(g.getMobilePhone())
+                                    .withWorkPhone(g.getWorkPhone()).withHomePhone2(g.getHomePhone2())
+                            )).collect(Collectors.toSet())));
         }
     }
 
